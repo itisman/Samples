@@ -1,0 +1,49 @@
+.Header
+  background alt-color
+  color light-color
+  padding 20px 0 30px 0
+  text-align center
+  border-bottom solid 16px splash-color
+
+  a
+    color splash-color
+    text-shadow none
+    font-weight 700
+
+  a:hover
+    text-decoration underline
+
+.Header-logo
+  text-align center
+  font-size 4rem
+  line-height 1.9
+  color splash-color
+  text-shadow 0 0 10px splash-color
+
+  span
+    color light-color
+
+.Header-avatar
+  width 128px
+  height 128px
+  border-radius 50%
+  background dark-color url('images/avatar.jpg') center center no-repeat
+  background-size cover
+  box-shadow 0 2px 10px rgba(0, 0, 0, 0.2)
+  border solid 4px light-color
+  display inline-block
+
+.Header-contents
+  text-shadow 0 1px 0px rgba(0, 0, 0, 0.2)
+
+.Header-actions
+  font-size 0.9rem
+  text-align center
+  text-shadow 0 1px 0px rgba(0, 0, 0, 0.2)
+
+@media only screen and (min-width: 800px)
+  .Header
+    text-align left
+
+  .Header-actions
+    text-align right

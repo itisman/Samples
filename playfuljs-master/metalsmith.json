@@ -1,0 +1,41 @@
+{
+  "source": "./content",
+  "destination": "./build",
+  "metadata": {
+    "title": "PlayfulJS",
+    "description": "Adventures in the land of JavaScript"
+  },
+  "plugins": {
+    "metalsmith-drafts": true,
+    "metalsmith-excerpts": true,
+    "metalsmith-assets": {
+      "source": "styles",
+      "destination": "styles"
+    },
+    "metalsmith-ignore": [
+      "styles/!(global).styl"
+    ],
+    "metalsmith-stylus": {
+      "paths": ["styles"]
+    },
+    "metalsmith-markdown": {
+      "gfm": true
+    },
+    "metalsmith-collections": {
+      "articles": {
+        "pattern": "articles/*",
+        "sortBy": "date",
+        "reverse": true
+      }
+    },
+    "metalsmith-permalinks": {
+      "pattern": ":title",
+      "relative": false
+    },
+    "metalsmith-templates": {
+      "engine": "jade",
+      "directory": "./templates"
+    },
+    "metalsmith-autoprefixer": {}
+  }
+}

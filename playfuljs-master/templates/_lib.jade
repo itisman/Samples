@@ -1,0 +1,58 @@
+mixin ArticleColumn(article)
+  .col.six
+    a(href=article.path)
+      h2 #{article.title}
+    p.Article-date= simpleDate(article.date)
+    .Article-contents!= article.excerpt
+
+mixin Subscriber
+  form.Subscriber(action='http://playfuljs.us8.list-manage.com/subscribe/post?u=21e71615334170b2bd165bd2e&amp;id=8a76f848a7' method='post' name='mc-embedded-subscribe-form' target='_blank')
+    h4 Get updates!
+      p Keep up with playful articles by email
+      input(type='email' name='EMAIL' placeholder='enter your email address')
+      div(style='position: absolute; left: -5000px;')
+        input(type='text' name='b_21e71615334170b2bd165bd2e_8a76f848a7' tabindex='-1' value='')
+      button.Button Subscribe
+      p Related content also posted at&nbsp;
+        a(href='http://twitter.com/hunterloftis') @hunterloftis
+
+mixin PrevNext(article)
+  if article.next || article.previous
+    section.Recent
+      if article.next
+        h4 Previous Article
+          a(href='/' + article.next.path)= article.next.title
+      if article.previous
+        h4 Next Article
+          a(href='/' + article.previous.path)= article.previous.title
+
+mixin Recent
+  section.Recent
+    h4 Recent Articles
+    each article in collections.articles.slice(0, 3)
+      a(href='/' + article.path) #{article.title}
+
+mixin Analytics
+  script.
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-50885475-1', 'playfuljs.com');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+- function pairUp(list) {
+-   return list.reduce(function(memo, article, i) {
+-     if (i % 2 === 0) memo.push([article, false]);
+-     else memo[memo.length - 1][1] = article;
+-     return memo;
+-   }, []);
+- }
+
+- function simpleDate(date) {
+  - if (!date) return '';
+  - var month = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'][date.getMonth()];
+  - return [date.getDate() + 1, month, date.getFullYear()].join(' ');
+- }
